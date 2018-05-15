@@ -1,0 +1,16 @@
+version: '2'
+
+services:
+ api:
+   build: ./
+   command: go run main.go
+   container_name: logtest
+   ports:
+   - 88:80
+   tty: true
+   volumes:
+    - ./var/log:/var/log/logtest/
+    - ./:/go/src/github.com/thimunri/logtest
+   environment:
+     GOPATH: /go
+     LOG_PATH: /var/log/logtest
